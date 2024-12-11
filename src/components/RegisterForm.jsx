@@ -10,29 +10,44 @@ import {
   Title,
   Anchor,
 } from "@mantine/core";
-import { getSupabaseClient } from "../supabase/getSupabaseClient"; 
+import { getSupabaseClient } from "../supabase/getSupabaseClient"; //
 
-const LoginPage = () => {
+const RegisterPage = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [receiveEmail, setReceiveEmail] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const supabase = getSupabaseClient();
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     setLoading(true);
     setError(null);
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      setLoading(false);
+      return;
+    }
+
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          data: {
+            name,
+            receiveEmail,
+          },
+        },
       });
 
       if (error) {
         setError(error.message);
       } else {
-        // Redirect to dashboard
+        // Redirect or notify user of success
         window.location.href = "/dashboard";
       }
     } catch (err) {
@@ -49,23 +64,30 @@ const LoginPage = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        padding: "5vh",
+        padding:"5vh",
       }}
     >
       <Paper
         radius={5}
         padding="xl"
-        style={{ width: "100%", maxWidth: 400, backgroundColor: "white",padding:"5vh" }}
-        shadow="xs"
+        style={{ width: "100%", maxWidth: 400, backgroundColor: "white",border: "1px solid #ccc" }}
       >
         <Title order={3} style={{ marginBottom: 15, color: "#333333" }}>
-          Log ind
+          Opret Bruger
         </Title>
         {error && (
           <Box style={{ color: "red", marginBottom: 10, textAlign: "left" }}>
             {error}
           </Box>
         )}
+        <TextInput
+          label="Navn"
+          placeholder="Dit navn"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          style={{ marginBottom: 15 }}
+        />
         <TextInput
           label="Email"
           placeholder="Din email"
@@ -80,30 +102,32 @@ const LoginPage = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          
+          style={{ marginBottom: 15 }}
         />
-        <Anchor
-          href="#"
-          style={{ fontSize: "0.8rem", color: "#1098ad", marginBottom:5 }}
-        >
-          Glemt kodeord?
-        </Anchor>
+        <PasswordInput
+          label="Bekræft Kodeord"
+          placeholder="Gentag kodeordet"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+          style={{ marginBottom: 15 }}
+        />
         <Checkbox
-          label="Husk mig"
-          checked={rememberMe}
-          onChange={(e) => setRememberMe(e.currentTarget.checked)}
+          label="Vil gerne modtage notifikationer på mail"
+          checked={receiveEmail}
+          onChange={(e) => setReceiveEmail(e.currentTarget.checked)}
           style={{ marginBottom: 20 }}
         />
         <Button
           fullWidth
           style={{ backgroundColor: "#1098ad" }}
           loading={loading}
-          onClick={handleLogin}
+          onClick={handleRegister}
         >
-          Log ind
+          Opret Bruger
         </Button>
         <Anchor
-          href="/register"
+          href="/login"
           style={{
             display: "block",
             textAlign: "center",
@@ -112,11 +136,11 @@ const LoginPage = () => {
             color: "#1098ad",
           }}
         >
-          Opret profil
+          Allerede en bruger? Log ind
         </Anchor>
       </Paper>
     </Box>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
