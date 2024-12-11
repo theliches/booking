@@ -1,13 +1,23 @@
 // dashboard.lazy.jsx
-import React from "react";
+import { lazy, Suspense } from 'react';
+import Sidebar from '../components/Sidebar';
 
-const DashboardPage = () => {
+const DashboardContent = lazy(() => import('../components/Dashboard'));
+
+
+
+const Dashboard = () => {
   return (
-    <div>
-      <h1>Welcome to the Dashboard</h1>
-      {/* Your dashboard content here */}
+    <div style={{ display: 'flex', height: '100vh' }}>
+      <Sidebar style={{ width: '250px' }} />  {/* Set the sidebar width */}
+      
+      <div style={{ flex: 1, padding: '20px' }}>
+        <Suspense fallback={<div>Loading dashboard...</div>}>
+          <DashboardContent />  {/* Lazy-loaded dashboard content */}
+        </Suspense>
+      </div>
     </div>
   );
 };
 
-export default DashboardPage;
+export default Dashboard;

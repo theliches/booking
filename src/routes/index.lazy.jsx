@@ -1,5 +1,6 @@
 import { createLazyFileRoute, useRouteContext } from "@tanstack/react-router";
-
+import { lazy } from "react";
+import LoginPage from "./login.lazy";
 export const Route = createLazyFileRoute("/")({
   component: Index,
 });
@@ -14,3 +15,4 @@ function Index() {
     </div>
   );
 }
+export default LoginPage;

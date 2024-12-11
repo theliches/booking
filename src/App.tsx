@@ -1,9 +1,12 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 import { getSupabaseClient } from "./supabase/getSupabaseClient";
+
+const Login = lazy(() => import('./components/LoginForm'));
+const Dashboard = lazy(() => import('./components/Dashboard'));
 
 // Create the router
 export const router = createRouter({

@@ -1,4 +1,5 @@
 import { createLazyFileRoute, useRouteContext } from "@tanstack/react-router";
+import DashboardPage from "./dashboard.lazy";
 
 export const Route = createLazyFileRoute("/about")({
   component: About,
@@ -10,3 +11,4 @@ function About() {
 
   return <div>Hello from About!</div>;
 }
+export default DashboardPage;

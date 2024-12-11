@@ -5,6 +5,7 @@ import {
   Outlet,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
+
 export interface RouterContext {
   supabase: any;
 }
@@ -17,9 +18,8 @@ function RootRouteWithLayout() {
   return (
     <>
       <div>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/dashboard">Home</Link>
+        <Link to="/">About</Link>
       </div>
       <hr />
       <Outlet />
