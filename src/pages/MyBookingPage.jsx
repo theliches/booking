@@ -1,5 +1,5 @@
 import React from "react";
-import BookingListComponent from "../components/Dashboard/BookingListComponent";
+import BookingListComponent from "../components/dashboard/BookingListComponent";
 
 
 const MyBookingPage = () => {

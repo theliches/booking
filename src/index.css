@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.go-to-booking-button {
+    background-color: #1098ad; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-top:20px;
+  }
+  
+  .go-to-booking-button:hover {
+    background-color: #0f798a;
+  }
+  
+  

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getSupabaseClient } from "../../../supabase/getSupabaseClient";
+import { Link } from 'react-router-dom';
 import "./BookingListComponent.css";
+import "../../index.css";
 
 const supabase = getSupabaseClient();
 
@@ -55,7 +57,14 @@ const BookingListComponent = () => {
           </div>
         ))
       ) : (
-        <p>Ingen bookinger fundet.</p>
+        <div>
+          <p>Ingen bookinger fundet.</p>
+          <Link to="/booking">
+            <button className="go-to-booking-button">
+              Gå til booking
+            </button>
+          </Link>
+        </div>
       )}
     </div>
   );

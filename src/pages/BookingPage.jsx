@@ -1,7 +1,7 @@
 import Header from "../components/common/Header";
 import React from "react";
-import BookingComponent from "../components/Dashboard/BookingComponent";
-import BookingListComponent from "../components/Dashboard/BookingListComponent";
+import BookingComponent from "../components/dashboard/BookingComponent";
+import BookingListComponent from "../components/dashboard/BookingListComponent";
 
 
 const BookingPage = () => {
