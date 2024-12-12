@@ -17,12 +17,14 @@ const BookingListComponent = () => {
           name
         )
       `);
+
       if (error) {
-        console.error('Error fetching bookings:', error);
-      } else {
-        console.log('Fetched bookings:', data);
-        setBookings(data);
+        console.error("Fejl ved hentning af bookinger:", error.message);
+        return;
       }
+
+      console.log("Bookinger hentet:", data);
+      setBookings(data || []);
     };
 
     fetchBookings();
@@ -30,25 +32,31 @@ const BookingListComponent = () => {
 
   const handleCancel = async (bookingId) => {
     const { error } = await supabase.from('bookings').delete().match({ id: bookingId });
+
     if (error) {
-      console.error('Error cancelling booking:', error);
+      console.error("Fejl ved aflysning af booking:", error.message);
     } else {
-      alert('Booking cancelled successfully!');
-      // Update the list of bookings after cancellation
-      setBookings(bookings.filter(booking => booking.id !== bookingId));
+      alert("Booking aflyst succesfuldt!");
+      setBookings(prev => prev.filter(booking => booking.id !== bookingId));
     }
   };
 
   return (
     <div className="my-bookings">
       <h2>Mine bookinger</h2>
-      {bookings.map(booking => (
-        <div key={booking.id} className="booking-box">
-          <div>{booking.rooms.name}</div>
-          <div>{booking.time}, {new Date(booking.date).toLocaleDateString('da-DK')}</div>
-          <button className="cancel-button" onClick={() => handleCancel(booking.id)}>AFLYS</button>
-        </div>
-      ))}
+      {bookings.length > 0 ? (
+        bookings.map(booking => (
+          <div key={booking.id} className="booking-box">
+            <div className="room-name">{booking.rooms?.name || "Ukendt lokale"}</div>
+            <div className="booking-details">
+              {booking.time}, {booking.date ? new Date(booking.date).toLocaleDateString("da-DK") : "Ukendt dato"}
+            </div>
+            <button className="cancel-button" onClick={() => handleCancel(booking.id)}>AFLYS</button>
+          </div>
+        ))
+      ) : (
+        <p>Ingen bookinger fundet.</p>
+      )}
     </div>
   );
 };

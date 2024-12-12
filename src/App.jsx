@@ -8,7 +8,7 @@ import MyBookingPage from './pages/MyBookingPage';
 import RoomOverviewPage from './pages/RoomOverviewPage';
 import MedialabPage from './pages/MedialabPage';
 import MakerlabPage from './pages/MakerlabPage';
-import AuditoriumPage from './pages/AuditoriumPage';
+import AuditoriumPage from './pages/auditoriumPage';
 
 const App = () => {
   const location = useLocation();

@@ -1,13 +1,21 @@
-import React from 'react';
-import BookingListComponent from '../components/Dashboard/BookingListComponent';
+import Header from "../components/common/Header";
+import React from "react";
+import BookingListComponent from "../components/Dashboard/BookingListComponent";
+
 
 const MyBookingPage = () => {
-  return (
-    <div className="my-booking-page">
-      <h1>Mine Bookinger</h1>
+	return (
+		<div className='flex-1 overflow-auto relative z-10'>							
       <BookingListComponent />
-    </div>
-  );
+			</div>
+		
+	);
 };
 
+
+
 export default MyBookingPage;
+
+
+
+

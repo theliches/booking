@@ -1,27 +1,62 @@
+/* Styling for the Booking List container */
 .my-bookings {
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }
   
+  .my-bookings h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+  
+  /* Styling for each booking item */
   .booking-box {
-    background-color: #f0f0f0;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 50px;
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: box-shadow 0.3s ease;
   }
   
+  .booking-box:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .room-name {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .booking-details {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  /* Styling for the cancel button */
   .cancel-button {
     background-color: #FF6347;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cancel-button:hover {
+    background-color: #FF4500;
   }
   
