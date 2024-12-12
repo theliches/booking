@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getSupabaseClient } from "/supabase/getSupabaseClient";
+import { getSupabaseClient } from "../../../supabase/getSupabaseClient";
 import "./BookingListComponent.css";
 
 const supabase = getSupabaseClient();
@@ -8,40 +8,23 @@ const BookingListComponent = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    const testConnection = async () => {
-      try {
-        const response = await fetch('https://afcvomwaonvvozhcjqqs.supabase.co');
-        if (response.ok) {
-          console.log('Supabase connection is working');
-        } else {
-          console.error('Failed to connect to Supabase');
-        }
-      } catch (error) {
-        console.error('Network error:', error);
+    const fetchBookings = async () => {
+      const { data, error } = await supabase.from('bookings').select(`
+        id,
+        date,
+        time,
+        rooms (
+          name
+        )
+      `);
+      if (error) {
+        console.error('Error fetching bookings:', error);
+      } else {
+        console.log('Fetched bookings:', data); // Add this line
+        setBookings(data);
       }
     };
 
-    testConnection();
-  }, []);
-
-  const fetchBookings = async () => {
-    const { data, error } = await supabase.from('bookings').select(`
-      id,
-      date,
-      time,
-      rooms (
-        name
-      )
-    `);
-    if (error) {
-      console.error('Error fetching bookings:', error);
-    } else {
-      console.log('Fetched bookings:', data);
-      setBookings(data);
-    }
-  };
-
-  useEffect(() => {
     fetchBookings();
   }, []);
 
@@ -51,6 +34,7 @@ const BookingListComponent = () => {
       console.error('Error cancelling booking:', error);
     } else {
       alert('Booking cancelled successfully!');
+      // Update the list of bookings after cancellation
       setBookings(bookings.filter(booking => booking.id !== bookingId));
     }
   };

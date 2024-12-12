@@ -1,4 +1,3 @@
-// src/App.jsx
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
@@ -10,10 +9,12 @@ import SalesPage from './pages/SalesPage';
 import OrdersPage from './pages/OrdersPage';
 import AnalyticsPage from './pages/AnalyticsPage';
 import SettingsPage from './pages/SettingsPage';
+import RegisterPage from './pages/RegisterPage';
+import ForgotPassword from './pages/ForgotPassword';
 
 const App = () => {
   const location = useLocation();
-  const isLoginPage = location.pathname === '/';
+  const isLoginPage = location.pathname === '/' || location.pathname === '/login';
 
   return (
     <div className={`flex h-screen overflow-hidden ${isLoginPage ? 'bg-gray-900 text-gray-100' : ''}`}>
@@ -27,6 +28,9 @@ const App = () => {
         )}
         <Routes>
           <Route path='/' element={<LoginPage />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/dashboard' element={<DashboardPage />} />
           <Route path='/booking' element={<BookingPage />} />
           <Route path='/mybooking' element={<MyBookingPage />} />
@@ -34,7 +38,6 @@ const App = () => {
           <Route path='/orders' element={<OrdersPage />} />
           <Route path='/analytics' element={<AnalyticsPage />} />
           <Route path='/settings' element={<SettingsPage />} />
-		  <Route path='/login' element={<DashboardPage />} />
         </Routes>
       </div>
     </div>
