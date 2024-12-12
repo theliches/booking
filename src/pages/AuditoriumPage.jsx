@@ -8,9 +8,9 @@ const AuditoriumPage = () => {
 
 			<main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
 				
-				{/* Info Box styled like Booking system */}
+				{/* Info Box */}
 				<div className="flex items-center justify-start bg-[#f0f0f0] p-4 rounded-md shadow-md mb-8 space-x-8 border border-gray-300">
-					{/* Icons with info aligned horizontally */}
+					{/* Text & Icons */}
 					<div className="flex items-center">
 						<Users className="text-[#2c2e33] text-3xl mr-2" />
 						<span className="text-[#333] text-lg">2-8 personer</span>
@@ -25,17 +25,15 @@ const AuditoriumPage = () => {
 					</div>
 				</div>
 
-				{/* Lorem Ipsum content */}
+				{/* Text */}
 				<div className="mb-8">
 					<p className="text-gray-600">
-						{/* Lorem Ipsum - 500 lines */}
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 						{/* Repeat the Lorem Ipsum text to make it 500 lines */}
 					</p>
 				</div>
 				<div className="mb-8">
 					<p className="text-gray-600">
-						{/* Lorem Ipsum - another 500 lines */}
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 						{/* Repeat the Lorem Ipsum text to make it 500 lines */}
 					</p>

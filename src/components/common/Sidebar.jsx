@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bookmark, Menu, Calendar, Home, Pin, Camera, Box, Volume2 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { getSupabaseClient } from "../../../supabase/getSupabaseClient";
 
 const SIDEBAR_ITEMS = [
   { name: "Dashboard", icon: Home, color: "#6366f1", href: "/dashboard" },
@@ -15,6 +16,19 @@ const SIDEBAR_ITEMS = [
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [email, setEmail] = useState(null);
+  const supabase = getSupabaseClient();
+
+  useEffect(() => {
+    const getSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session && session.user) {
+        setEmail(session.user.email); 
+      }
+    };
+    
+    getSession();
+  }, [supabase]);
 
   return (
     <motion.div
@@ -56,6 +70,11 @@ const Sidebar = () => {
               </Link>
             ))}
           </nav>
+
+          {/* Profile Section at the Bottom */}
+          <div className="flex items-center justify-start mt-auto p-4 border-t border-gray-700">
+            <span className="text-white text-sm">{email ? email : 'Log ind'}</span>
+          </div>
         </div>
       </div>
     </motion.div>

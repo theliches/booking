@@ -4,9 +4,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  background: #eee;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -49,7 +47,7 @@
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
-  background: linear-gradient(to right, #56ab2f, #a8e063);
+  background: #1098ad;
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -59,8 +57,8 @@
 }
 
 .search-button:hover {
-  transform: scale(1.05);
-  background: linear-gradient(to right, #6ecf3e, #c0f27b);
+  transform: scale(1.00);
+  background: #0c7585;
 }
 
 /* Results Container */
@@ -109,7 +107,7 @@
   font-size: 14px;
   font-weight: bold;
   border: none;
-  background: #56ab2f;
+  background: #1098ad;
   color: white;
   cursor: pointer;
   transition: transform 0.2s, background-color 0.2s;
@@ -117,7 +115,7 @@
 
 .book-button:hover {
   transform: scale(1.1);
-  background: #6ecf3e;
+  background: #095561;
 }
 
 /* Responsive Design */
