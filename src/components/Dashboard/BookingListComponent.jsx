@@ -20,7 +20,7 @@ const BookingListComponent = () => {
       if (error) {
         console.error('Error fetching bookings:', error);
       } else {
-        console.log('Fetched bookings:', data); // Add this line
+        console.log('Fetched bookings:', data);
         setBookings(data);
       }
     };

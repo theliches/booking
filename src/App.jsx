@@ -5,12 +5,10 @@ import Sidebar from './components/common/Sidebar';
 import DashboardPage from './pages/DashboardPage';
 import BookingPage from './pages/BookingPage';
 import MyBookingPage from './pages/MyBookingPage';
-import SalesPage from './pages/SalesPage';
-import OrdersPage from './pages/OrdersPage';
-import AnalyticsPage from './pages/AnalyticsPage';
-import SettingsPage from './pages/SettingsPage';
-import RegisterPage from './pages/RegisterPage';
-import ForgotPassword from './pages/ForgotPassword';
+import RoomOverviewPage from './pages/RoomOverviewPage';
+import MedialabPage from './pages/MedialabPage';
+import MakerlabPage from './pages/MakerlabPage';
+import AuditoriumPage from './pages/AuditoriumPage';
 
 const App = () => {
   const location = useLocation();
@@ -29,15 +27,13 @@ const App = () => {
         <Routes>
           <Route path='/' element={<LoginPage />} />
           <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
-          <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/dashboard' element={<DashboardPage />} />
           <Route path='/booking' element={<BookingPage />} />
           <Route path='/mybooking' element={<MyBookingPage />} />
-          <Route path='/sales' element={<SalesPage />} />
-          <Route path='/orders' element={<OrdersPage />} />
-          <Route path='/analytics' element={<AnalyticsPage />} />
-          <Route path='/settings' element={<SettingsPage />} />
+          <Route path='/room-overview' element={<RoomOverviewPage />} />
+          <Route path='/medialab' element={<MedialabPage />} />
+          <Route path='/makerlab' element={<MakerlabPage />} />
+          <Route path='/auditorium' element={<AuditoriumPage />} />
         </Routes>
       </div>
     </div>

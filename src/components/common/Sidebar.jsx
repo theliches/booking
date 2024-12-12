@@ -7,10 +7,10 @@ const SIDEBAR_ITEMS = [
   { name: "Dashboard", icon: Home, color: "#6366f1", href: "/dashboard" },
   { name: "Book lokale", icon: Bookmark, color: "#8B5CF6", href: "/booking" },
   { name: "Mine bookinger", icon: Calendar, color: "#EC4899", href: "/mybooking" },
-  { name: "Lokale oversigt", icon: Pin, color: "#10B981", href: "/sales" },
-  { name: "Medialab", icon: Camera, color: "#F59E0B", href: "/orders" },
-  { name: "Makerlab", icon: Box, color: "#3B82F6", href: "/analytics" },
-  { name: "Auditorium", icon: Volume2, color: "#6EE7B7", href: "/settings" },
+  { name: "Lokale oversigt", icon: Pin, color: "#10B981", href: "/room-overview" },
+  { name: "Medialab", icon: Camera, color: "#F59E0B", href: "/medialab" },
+  { name: "Makerlab", icon: Box, color: "#3B82F6", href: "/makerlab" },
+  { name: "Auditorium", icon: Volume2, color: "#6EE7B7", href: "/auditorium" },
 ];
 
 const Sidebar = () => {
@@ -31,7 +31,7 @@ const Sidebar = () => {
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             className='p-2 rounded-full hover:bg-gray-700 transition-colors max-w-fit'
           >
-            <Menu size={24} />
+            <Menu size={24} color="#FFFFFF" />
           </motion.button>
 
           <nav className='mt-8 flex-grow'>

@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { getSupabaseClient } from "../../../supabase/getSupabaseClient";
 import { useNavigate } from 'react-router-dom';
 
-const RegisterForm = () => {
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     const supabase = getSupabaseClient();
-    const { error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -20,12 +20,12 @@ const RegisterForm = () => {
     if (error) {
       setError(error.message);
     } else {
-      navigate('/dashboard'); // Redirect to dashboard on successful registration
+      navigate('/dashboard');
     }
   };
 
   return (
-    <form onSubmit={handleRegister}>
+    <form onSubmit={handleSubmit}>
       <div style={{ marginBottom: '1rem' }}>
         <label htmlFor="email" style={{ display: 'block', marginBottom: '0.5rem' }}>Email:</label>
         <input
@@ -50,10 +50,10 @@ const RegisterForm = () => {
       </div>
       {error && <div style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>}
       <button type="submit" style={{ width: '100%', padding: '0.75rem', backgroundColor: '#007BFF', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-        Register
+        Login
       </button>
     </form>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;

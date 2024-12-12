@@ -14,7 +14,6 @@ const BookingPage = () => {
 					
 				
 				<div className="booking-page">
-      <h1>Mine Bookinger</h1>
       <BookingListComponent />
     </div>
 			</main>
