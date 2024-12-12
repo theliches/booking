@@ -1,65 +1,63 @@
 import React, { useState } from 'react';
+import { getSupabaseClient } from '../../../supabase/getSupabaseClient';
 import { useNavigate } from 'react-router-dom';
-import { Paper, TextInput, PasswordInput, Button, Container, Title } from '@mantine/core';
-import { getSupabaseClient } from '../../../supabase/getSupabaseClient'; // Adjusted path
 
-const LoginForm: React.FC = () => {
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
-  const supabase = getSupabaseClient();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+    setError('');
+    const supabase = getSupabaseClient();
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-      if (error) {
-        console.error('Login failed:', error.message);
-      } else {
-        navigate('/dashboard'); // Successful login, redirect to protected route
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
+    if (error) {
+      setError(error.message);
+    } else {
+      navigate('/dashboard'); // Redirect to dashboard on successful login
     }
   };
 
   return (
-    <Container
-      size={420}
-      my={40}
-      style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}
-    >
-      <Paper radius="md" p="xl" withBorder style={{ backgroundColor: '#1a2432' }}>
-        <Title order={2} align="center" mb="lg" style={{ color: 'white' }}>
-          Login
-        </Title>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f0f0f0' }}>
+      <div style={{ padding: '2rem', backgroundColor: '#1a2432', borderRadius: '8px', color: 'white', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }}>
+        <h2 style={{ textAlign: 'center' }}>Login</h2>
         <form onSubmit={handleSubmit}>
-          <TextInput
-            label="Email"
-            placeholder="your.email@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={{ marginBottom: '1rem' }}
-          />
-          <PasswordInput
-            label="Password"
-            placeholder="Your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={{ marginBottom: '1rem' }}
-          />
-          <Button type="submit" fullWidth style={{ backgroundColor: '#1a2432', color: 'white' }}>
+          <div style={{ marginBottom: '1rem' }}>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              style={{ width: '100%', padding: '0.5rem', marginTop: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              style={{ width: '100%', padding: '0.5rem', marginTop: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+            />
+          </div>
+          {error && <div style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>}
+          <button type="submit" style={{ width: '100%', padding: '0.75rem', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
             Login
-          </Button>
+          </button>
         </form>
-      </Paper>
-    </Container>
+      </div>
+    </div>
   );
 };
 

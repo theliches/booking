@@ -1,0 +1,71 @@
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.filter-fields {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.filter-field label {
+  margin-bottom: 5px;
+}
+
+.filter-field select, .search-button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.search-button {
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+.results-container, .my-bookings {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.result-box, .booking-box {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.book-button, .cancel-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: #FF6347;
+}

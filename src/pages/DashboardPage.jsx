@@ -1,13 +1,13 @@
 import React from 'react';
 import BookingListComponent from '../components/Dashboard/BookingListComponent';
 
-const MyBookingPage = () => {
+const DashboardPage = () => {
   return (
-    <div className="my-booking-page">
-      <h1>Mine Bookinger</h1>
+    <div className="dashboard">
+      <h1>Dashboard</h1>
       <BookingListComponent />
     </div>
   );
 };
 
-export default MyBookingPage;
+export default DashboardPage;
