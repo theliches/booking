@@ -1,11 +1,6 @@
-import { motion } from "framer-motion";
-
+import React from "react";
 import Header from "../components/common/Header";
-import StatCard from "../components/common/StatCard";
-import { CreditCard, DollarSign, ShoppingCart, TrendingUp } from "lucide-react";
-import SalesOverviewChart from "../components/sales/SalesOverviewChart";
-import SalesByCategoryChart from "../components/sales/SalesByCategoryChart";
-import DailySalesTrend from "../components/sales/DailySalesTrend";
+
 
 
 const SalesPage = () => {

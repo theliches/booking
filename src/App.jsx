@@ -1,10 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 
 import Sidebar from "./components/common/Sidebar";
-
 import OverviewPage from "./pages/OverviewPage";
 import BookingPage from "./pages/BookingPage";
-import UsersPage from "./pages/UsersPage";
+import MyBookingPage from "./pages/MyBookingPage";
 import SalesPage from "./pages/SalesPage";
 import OrdersPage from "./pages/OrdersPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
@@ -22,14 +21,14 @@ function App() {
 
 			<Sidebar />
 			<Routes>
-				<Route path='/' element={<OverviewPage />} />
-				<Route path='/Booking' element={<BookingPage />} />
-				<Route path='/users' element={<UsersPage />} />
+				<Route path='/' element={<LoginPage />} />
+				<Route path='/booking' element={<BookingPage />} />
+				<Route path='/mybooking' element={<MyBookingPage />} />
 				<Route path='/sales' element={<SalesPage />} />
 				<Route path='/orders' element={<OrdersPage />} />
 				<Route path='/analytics' element={<AnalyticsPage />} />
 				<Route path='/settings' element={<SettingsPage />} />
-				<Route path='/Login' element={<LoginPage />} />
+				<Route path='/Overview' element={<OverviewPage/>} />
 			</Routes>
 		</div>
 	);
