@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Bookmark, Menu, Calendar, Home, Pin, Camera, Box, Volume2 } from "lucide-react";
+import { Bookmark, Menu, Calendar, Home, Pin, Camera, Box, Volume2, User } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { getSupabaseClient } from "../../../supabase/getSupabaseClient";
@@ -73,7 +73,15 @@ const Sidebar = () => {
 
           {/* Profile Section at the Bottom */}
           <div className="flex items-center justify-start mt-auto p-4 border-t border-gray-700">
-            <span className="text-white text-sm">{email ? email : 'Log ind'}</span>
+            {/* Animate login text */}
+            <AnimatePresence>
+              {isSidebarOpen && (
+                <motion.div className="flex items-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  <User size={20} color="#FFFFFF" />
+                  <span className="text-white text-sm ml-2">{email ? email : 'Log ind'}</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>
